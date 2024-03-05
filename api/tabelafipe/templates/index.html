@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+{% block conteudo %}
+
+<ul>
+    {% for tipo in tipos %}
+    <li><a href="{{url_for(tipo)}}">
+            <button>
+                {{ tipo.capitalize() }}
+            </button>
+        </a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

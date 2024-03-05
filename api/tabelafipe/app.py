@@ -1,24 +1,25 @@
-import requests
+from src.utils import pegar_carro
+from flask import Flask, render_template, redirect, request, url_for
+
+app = Flask(__name__)
+
+tipos = ['carros', 'motos', 'caminhoes']
 
 
-def pegar_carro(veiculos, marca):
-    url = f'https://parallelum.com.br/fipe/api/v1/{veiculos}/marcas'
-    response = requests.get(url)
-    if response.status_code == 200:
-        dados = response.json()
-        # Preciso dizer a marca do carro que quero, ou seja, o value da key nome dentro da lista dados
-        for d in dados:
-            if d['nome'] == marca:
-                marca_response = requests.get(f'https://parallelum.com.br/fipe/api/v1/carros/marcas/{d['codigo']}/modelos/')
-                dados_marca = marca_response.json()
-                return dados_marca
-    else:
-        return None
+@app.route('/')
+def index():
+    return render_template('index.html', title='Veículos', tipos=tipos)
 
+@app.route('/carros')
+def carros():
+    return render_template('carros.html', title='Carros')
 
-def main():
-    carros_bmw = pegar_carro('carros','BMW')
-    print(carros_bmw)
+@app.route('/motos')
+def motos():
+    return render_template('motos.html', title='Motos')
 
-if __name__ == '__main__':
-    main()
+@app.route('/caminhoes')
+def caminhoes():
+    return render_template('caminhoes.html', title='Caminhoes')
+
+app.run(debug=True)
