@@ -5,12 +5,11 @@ from art import logo
 def choose_difficulty():
     difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
     if difficulty == "easy":
-        lifes = 10
+        return 10
     elif difficulty == "hard":
-        lifes = 5
+        return 5
     else:
         return None
-    return lifes
 
 
 def choose_number():
