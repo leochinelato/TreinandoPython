@@ -18,8 +18,7 @@ def format_data(account):
 def check(guess, followers_a, followers_b):
     if followers_a > followers_b:
         return guess == 'a'
-    else:
-        return guess == 'b'
+    return guess == 'b'
 
 
 def game():
