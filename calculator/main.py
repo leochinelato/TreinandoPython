@@ -27,7 +27,7 @@ if __name__ == '__main__':
         for v in operations:
             print(v)
         operation_symbol = input('Pick an operation: ')
-        calc_function = operations[operation_symbol]
+        calc_function = operations.get(operation_symbol)
         answer = calc_function(n1,n2)
         print(f'{n1} {operation_symbol} {n2} = {answer}')
         option = input(f'Type y to continue calculating with {answer}, or type n to start a new calculation: ')
