@@ -4,23 +4,18 @@ from art import logo
 
 def choose_difficulty():
     difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
-    if difficulty == "easy":
-        return 10
-    elif difficulty == "hard":
+    if difficulty == "hard":
         return 5
-    else:
-        return None
+    return 10
 
 
 def choose_number():
     print("I'm thinking of a number between 1 and 100.")
-    number = randint(1, 100)
-    return number
+    return randint(1, 100)
 
 
 def guess_number():
-    attempt = int(input('Make a guess: '))
-    return attempt
+    return int(input('Make a guess: '))
 
 
 if __name__ == '__main__':
