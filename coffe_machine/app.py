@@ -96,11 +96,14 @@ def coffee_machine():
             print('Turning off coffee machine...')
             machine_is_running = False
         else:
-            drink = hot_flavours[menu_option]
-            if check_resources(drink['ingredients']):
-                payment = insert_coins()
-                if check_transaction(payment, drink['cost']):
-                    make_coffee(menu_option, drink['ingredients'])
+            try:
+                drink = hot_flavours[menu_option]
+                if check_resources(drink['ingredients']):
+                    payment = insert_coins()
+                    if check_transaction(payment, drink['cost']):
+                        make_coffee(menu_option, drink['ingredients'])
+            except KeyError:
+                print('Invalid option. Try again.')
 
 
 def main():
